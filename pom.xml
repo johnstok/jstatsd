@@ -11,6 +11,13 @@
         <groupId>com.johnstok</groupId>
         <version>1.0.4</version>
     </parent>
+
+    <repositories>
+        <repository>
+            <id>johnstok</id>
+            <url>http://www.iamjohnstok.com/maven2</url>
+        </repository>
+    </repositories>
 	
 	<artifactId>jstatsd</artifactId>
 	<version>1.0.0-SNAPSHOT</version>
