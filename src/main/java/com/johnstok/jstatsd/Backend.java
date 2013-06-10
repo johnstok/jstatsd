@@ -34,4 +34,6 @@ public interface Backend {
     void gauge(String bucket, BigDecimal i);
 
     void time(String bucket, BigDecimal i);
+
+    void histogram(String bucket, BigDecimal i);
 }

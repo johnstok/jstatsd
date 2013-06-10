@@ -104,4 +104,11 @@ public class YammerBackend
     public void time(final String bucket, final BigDecimal i) {
         _metrics.timer(bucket).update(i.longValue(), TimeUnit.MILLISECONDS);
     }
+
+
+    /** {@inheritDoc} */
+    @Override
+    public void histogram(final String bucket, final BigDecimal i) {
+        _metrics.histogram(bucket).update(i.longValue()); // FIXME: Long conversion can lose / corrupt information.
+    }
 }

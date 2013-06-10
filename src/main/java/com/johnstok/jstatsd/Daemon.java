@@ -44,12 +44,15 @@ public class Daemon {
             final String sentence = new String(receivePacket.getData(), "UTF-8"); // TODO: Confirm charset.
             final String[] events = sentence.split("\n");
             for (final String event : events) {
-                final Matcher m = Pattern.compile("([^:]+):(-?\\d+(?:\\.\\d+)?)\\|(c|g|ms)(?:@(\\d+(?:\\.\\d+)?))?").matcher(event.trim());
+                final Matcher m = Pattern.compile("([^:]+):(-?\\d+(?:\\.\\d+)?)\\|(c|g|h|ms)(?:@(\\d+(?:\\.\\d+)?))?").matcher(event.trim());
                 if (m.matches()) {
                     final String bucket = m.group(1);
                     final BigDecimal i = new BigDecimal(m.group(2));
                     final String eventType = m.group(3);
                     switch (eventType) {
+                        case "h":
+                            backend.histogram(bucket, i);
+                            break;
                         case "c":
                             backend.count(bucket, i);
                             break;

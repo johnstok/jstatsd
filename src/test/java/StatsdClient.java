@@ -155,9 +155,14 @@ public class StatsdClient extends TimerTask {
 		return increment(key, magnitude, 1.0);
 	}
 
+	public boolean histogram(final String key, final int magnitude) {
+		final String stat = String.format(Locale.ENGLISH, "%s:%s|h", key, magnitude);
+		return send(1.0, stat);
+	}
+
 	public boolean increment(final String key, final int magnitude, final double sampleRate) {
-		final String stat = String.format(Locale.ENGLISH, "%s:%s|c", key, magnitude);
-		return send(sampleRate, stat);
+	    final String stat = String.format(Locale.ENGLISH, "%s:%s|c", key, magnitude);
+	    return send(sampleRate, stat);
 	}
 
 	public boolean increment(final int magnitude, final double sampleRate, final String... keys) {

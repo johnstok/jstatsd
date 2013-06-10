@@ -33,10 +33,13 @@ public class SmokeTests {
     @Test
     public void  connectAndSendMessage() throws Exception {
         final Random random = new Random();
-        final StatsdClient client = new StatsdClient("localhost", 8080);
+        final StatsdClient client = new StatsdClient("localhost", 7111);
         client.increment("foo", random.nextInt(20));
         client.timing("bar", random.nextInt(1000));
         client.gauge("baz", random.nextDouble());
+        client.histogram("blat", random.nextInt(100));
+        client.histogram("blat", random.nextInt(100));
+        client.histogram("blat", random.nextInt(100));
         client.flush();
     }
 }
