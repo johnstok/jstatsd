@@ -35,7 +35,7 @@ public class Daemon {
 
     public static void main(final String args[]) throws Exception {
         final Backend backend = new YammerBackend();
-        final DatagramSocket serverSocket = new DatagramSocket(8080);
+        final DatagramSocket serverSocket = new DatagramSocket(7111);
         while (true) {
             final byte[] receiveData = new byte[1024];
             final DatagramPacket receivePacket =
