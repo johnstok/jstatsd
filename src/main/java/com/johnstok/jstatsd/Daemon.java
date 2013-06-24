@@ -41,9 +41,10 @@ public class Daemon {
             final DatagramPacket receivePacket =
                 new DatagramPacket(receiveData, receiveData.length);
             serverSocket.receive(receivePacket);
-            final String sentence = new String(receivePacket.getData(), "UTF-8"); // TODO: Confirm charset.
+            final String sentence = new String(receivePacket.getData(), "UTF-8").trim(); // TODO: Confirm charset.
             final String[] events = sentence.split("\n");
             for (final String event : events) {
+                if (event.isEmpty()) { continue; }
                 final Matcher m = Pattern.compile("([^:]+):(-?\\d+(?:\\.\\d+)?)\\|(c|g|h|ms|s)(?:@(\\d+(?:\\.\\d+)?))?").matcher(event.trim());
                 if (m.matches()) {
                     final String bucket = m.group(1);
