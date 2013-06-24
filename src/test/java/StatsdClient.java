@@ -160,6 +160,11 @@ public class StatsdClient extends TimerTask {
 		return send(1.0, stat);
 	}
 
+	public boolean mark(final String key, final int magnitude) {
+	    final String stat = String.format(Locale.ENGLISH, "%s:%s|s", key, magnitude);
+	    return send(1.0, stat);
+	}
+
 	public boolean increment(final String key, final int magnitude, final double sampleRate) {
 	    final String stat = String.format(Locale.ENGLISH, "%s:%s|c", key, magnitude);
 	    return send(sampleRate, stat);

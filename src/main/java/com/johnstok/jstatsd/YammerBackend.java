@@ -79,6 +79,7 @@ public class YammerBackend
         reporter.start(10, TimeUnit.SECONDS);
     }
 
+
     /** {@inheritDoc} */
     @Override
     public void count(final String bucket, final BigDecimal i) {
@@ -110,5 +111,12 @@ public class YammerBackend
     @Override
     public void histogram(final String bucket, final BigDecimal i) {
         _metrics.histogram(bucket).update(i.longValue()); // FIXME: Long conversion can lose / corrupt information.
+    }
+
+
+    /** {@inheritDoc} */
+    @Override
+    public void mark(final String bucket, final BigDecimal i) {
+        _metrics.meter(bucket).mark(i.longValue());
     }
 }

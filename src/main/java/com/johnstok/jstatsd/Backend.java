@@ -36,4 +36,6 @@ public interface Backend {
     void time(String bucket, BigDecimal i);
 
     void histogram(String bucket, BigDecimal i);
+
+    void mark(String bucket, BigDecimal i);
 }

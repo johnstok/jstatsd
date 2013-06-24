@@ -40,6 +40,7 @@ public class SmokeTests {
         client.histogram("blat", random.nextInt(100));
         client.histogram("blat", random.nextInt(100));
         client.histogram("blat", random.nextInt(100));
+        client.mark("on.your.marks", 1);
         client.flush();
     }
 }

@@ -31,11 +31,13 @@ public class ConsoleBackend
     implements
         Backend {
 
+
     /** {@inheritDoc} */
     @Override
     public void histogram(final String bucket, final BigDecimal i) {
         System.out.println(bucket+":"+i+"|h");
     }
+
 
     /** {@inheritDoc} */
     @Override
@@ -43,11 +45,13 @@ public class ConsoleBackend
         System.out.println(bucket+":"+i+"|c");
     }
 
+
     /** {@inheritDoc} */
     @Override
     public void gauge(final String bucket, final BigDecimal i) {
         System.out.println(bucket+":"+i+"|g");
     }
+
 
     /** {@inheritDoc} */
     @Override
@@ -55,4 +59,10 @@ public class ConsoleBackend
         System.out.println(bucket+":"+i+"|ms");
     }
 
+
+    /** {@inheritDoc} */
+    @Override
+    public void mark(final String bucket, final BigDecimal i) {
+        System.out.println(bucket+":"+i+"|s");
+    }
 }
