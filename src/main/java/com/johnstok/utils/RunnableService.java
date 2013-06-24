@@ -17,20 +17,20 @@
  * You should have received a copy of the GNU General Public License
  * along with jstatsd. If not, see <http://www.gnu.org/licenses/>.
  *---------------------------------------------------------------------------*/
-package com.johnstok.jstatsd;
+package com.johnstok.utils;
 
 
 /**
- * A daemon that listens for Statsd messages over UDP.
+ * A service whose work can be performed by another thread.
  *
  * @author Keith Webster Johnston.
  */
-public class Daemon {
+public abstract class RunnableService
+    extends
+        Service
+    implements
+        Runnable {
 
-    public static void main(final String args[]) throws Exception {
-        new Thread(
-            new EventReceiver(new YammerBackend()),
-            "Event Receiver")
-            .start();
-    }
+    /* No methods. */
+
 }
